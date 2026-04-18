@@ -2,17 +2,15 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# Install system dependencies
 RUN apt-get update && apt-get install -y \
     gcc \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy and install dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir \
     PyMuPDF \
     fastapi \
-    uvicorn[standard] \
+    "uvicorn[standard]" \
     python-multipart \
     qdrant-client \
     sentence-transformers \
@@ -21,12 +19,9 @@ RUN pip install --no-cache-dir \
     cohere \
     pydantic
 
-# Copy app code
 COPY app/ ./app/
-COPY data/ ./data/
 
-# Create cache directory
-RUN mkdir -p data/processed/.cache
+RUN mkdir -p data/raw data/processed/.cache
 
 EXPOSE 8000
 
