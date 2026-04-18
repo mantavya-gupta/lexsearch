@@ -1,0 +1,16 @@
+# Environment
+.env
+*.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.cache/
+
+# Data (don't commit raw PDFs or embeddings cache)
+backend/data/processed/.cache/
+backend/data/raw/*.pdf
+
+# Mac
+.DS_Store
