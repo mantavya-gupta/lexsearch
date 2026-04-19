@@ -6,11 +6,18 @@
 __pycache__/
 *.pyc
 *.pyo
-.cache/
 
-# Data (don't commit raw PDFs or embeddings cache)
-backend/data/processed/.cache/
+# Cache
+.cache/
+**/.cache/
+
+# Data
+backend/data/processed/
 backend/data/raw/*.pdf
+backend/data/raw/*.html
 
 # Mac
 .DS_Store
+
+# Test files
+backend/test_phase*.py
